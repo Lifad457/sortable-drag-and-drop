@@ -1,51 +1,55 @@
 import { useEffect, useState } from 'react';
 import { BoardContainer } from './board.css';
 import Column from '../Column/Column';
-import { DEFAULT_CARDS } from '../../utils/config';
 import BurnBarrel from '../BurnBarrel/BurnBarrel';
 
 export default function Board() {
 	const [cards, setCards] = useState([]);
-	const [hasCheckedLocalStorage, setHasCheckedLocalStorage] = useState(false);
+	const [hasCheckedStorage, setHasCheckedStorage] = useState(false);
 
 	useEffect(() => {
-		hasCheckedLocalStorage &&
+		hasCheckedStorage &&
 			localStorage.setItem('cards', JSON.stringify(cards));
-	}, [cards]);
+	}, [cards, hasCheckedStorage]);
 
 	useEffect(() => {
-		const cardData = localStorage.getItem('cards');
+		const handleStorage = () => {
+			const cardData = localStorage.getItem('cards');
+			setCards(cardData ? JSON.parse(cardData) : []);
+			setHasCheckedStorage(true);
+		};
+		handleStorage();
 
-		setCards(cardData ? JSON.parse(cardData) : []);
-		setHasCheckedLocalStorage(true);
+		window.addEventListener('storage', handleStorage);
+		return () => window.removeEventListener('storage', handleStorage);
 	}, []);
 
 	return (
 		<BoardContainer>
 			<Column
-				title='Backlog'
-				column='backlog'
+				title='À faire'
+				column='a-faire'
 				headingColor='lightgray'
 				cards={cards}
 				setCards={setCards}
 			/>
 			<Column
-				title='TODO'
-				column='todo'
+				title='En cours'
+				column='en-cours'
 				headingColor='yellow'
 				cards={cards}
 				setCards={setCards}
 			/>
 			<Column
-				title='In progress'
-				column='doing'
+				title='À tester'
+				column='a-tester'
 				headingColor='cornflowerblue'
 				cards={cards}
 				setCards={setCards}
 			/>
 			<Column
-				title='Complete'
-				column='done'
+				title='Terminé'
+				column='termine'
 				headingColor='lightseagreen'
 				cards={cards}
 				setCards={setCards}
