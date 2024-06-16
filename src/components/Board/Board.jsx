@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BoardContainer } from './board.css';
 import Column from '../Column/Column';
 import BurnBarrel from '../BurnBarrel/BurnBarrel';
+import { DEFAULT_VALUES } from '../../utils/config';
 
 export default function Board() {
 	const [cards, setCards] = useState([]);
@@ -15,7 +16,7 @@ export default function Board() {
 	useEffect(() => {
 		const handleStorage = () => {
 			const cardData = localStorage.getItem('cards');
-			setCards(cardData ? JSON.parse(cardData) : []);
+			setCards(cardData ? JSON.parse(cardData) : DEFAULT_VALUES);
 			setHasCheckedStorage(true);
 		};
 		handleStorage();
