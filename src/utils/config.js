@@ -27,7 +27,7 @@ export const DEFAULT_VALUES = [
 	{ id: 'm6zz7lEIsDCX6eIL0q8dv', title: 'Cédric: MSF', column: 'a-faire' },
 	{
 		id: 'RORRfI1phD_GowKMPFcku',
-		title: 'Corentin: Pause Café',
+		title: 'Corentin: Réunion',
 		column: 'a-faire',
 	},
 ];
