@@ -11,7 +11,7 @@ export const DEFAULT_VALUES = [
 	},
 	{
 		id: 'eogH-l52YDQYENi7CM25i',
-		title: 'Corentin: Pause Café',
+		title: 'Corentin: Planning',
 		column: 'termine',
 	},
 	{
