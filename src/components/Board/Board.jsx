@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BoardContainer } from './board.css';
 import Column from '../Column/Column';
 import BurnBarrel from '../BurnBarrel/BurnBarrel';
-import { DEFAULT_VALUES } from '../../utils/config';
+import { DEFAULT_VALUES } from '../../utils/utils';
 
 export default function Board() {
 	const [cards, setCards] = useState([]);
